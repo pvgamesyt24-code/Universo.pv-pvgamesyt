@@ -3,52 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universo PV</title>
+    <title>Universo PV - Site Oficial</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #1e293b;
-            padding: 2rem;
-            border-bottom: 2px solid #3b82f6;
-        }
-        h1 {
-            color: #60a5fa;
-            margin: 0;
-        }
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .card {
-            background-color: #1e293b;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #0b0f19; color: #ffffff; text-align: center; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 2.5rem 1rem; border-bottom: 3px solid #3b82f6; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
+        header h1 { color: #60a5fa; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        header p { color: #94a3b8; font-size: 1.1rem; }
+        main { padding: 2rem 1rem; max-width: 1100px; margin: 0 auto; }
+        .section-title { color: #38bdf8; font-size: 1.8rem; margin: 2.5rem 0 1.5rem 0; text-transform: uppercase; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .card { background-color: #1e293b; border-radius: 12px; padding: 1.2rem; border: 1px solid #334155; transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+        .card h3 { color: #f8fafc; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem; }
+        .card .tag { display: inline-block; padding: 4px 10px; background-color: #0284c7; color: #ffffff; font-size: 0.8rem; font-weight: bold; border-radius: 20px; margin-bottom: 1rem; align-self: center; }
+        .btn-download { display: inline-block; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 8px; margin-top: auto; }
+        .btn-download:hover { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+        footer { background-color: #0f172a; padding: 1.5rem; color: #64748b; font-size: 0.9rem; border-top: 1px solid #1e293b; margin-top: 3rem; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Universo PV</h1>
-        <p>Bem-vindo ao site oficial!</p>
+        <p>Bem-vindo ao portal oficial! Confira e baixe as skins exclusivas!</p>
     </header>
 
     <main>
-        <div class="card">
-            <h2>Sobre o Projeto</h2>
-            <p>Este é o novo portal do Universo PV. Em breve, novos conteúdos, vídeos e novidades aqui!</p>
+        <h2 class="section-title">Skins e Pacotes PV GAMES</h2>
+
+        <div class="grid-container">
+
+            <div class="card">
+                <span class="tag">Traje Épico</span>
+                <h3>1. PV GAMES YT (Azul Neon)</h3>
+                <p>Armadura tecnológica com espada de energia e detalhes azul neon brilhante.</p>
+                <a href="#" class="btn-download">📥 Baixar Skin</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Guardião</span>
+                <h3>2. Guardião Real</h3>
+                <p>Estilo nobre e imponente em tons de branco e dourado da realeza.</p>
+                <a href="#" class="btn-download">📥 Baixar Skin</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Sombra</span>
+                <h3>3. Sombra Vermelha</h3>
+                <p>Visual tático urbano com capuz e detalhes vermelhos. Silencioso e letal.</p>
+                <a href="#" class="btn-download">📥 Baixar Skin</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Especialista</span>
+                <h3>4. Neon Toxic</h3>
+                <p>Traje tático com detalhes verde neon vibrante.</p>
+                <a href="#" class="btn-download">📥 Baixar Skin</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Lendário</span>
+                <h3>5. Rei do Jogo</h3>
+                <p>Edição lendária de luxo preta com detalhes dourados e coroa.</p>
+                <a href="#" class="btn-download">📥 Baixar Skin</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Místico</span>
+                <h3>6. Tempestade Púpura</h3>
+                <p>Visual místico roxo com efeitos de energia e poder supremo.</p>
+                <a href="#" class="btn-download">📥 Baixar Skin</a>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%); border-color: #6366f1;">
+                <span class="tag" style="background-color: #4f46e5;">PACOTE COMPLETO</span>
+                <h3>📦 Pacote Universo PV - Todas as Skins</h3>
+                <p>Baixe o pacote completo com todas as skins, estilos extras, picaretas e acessórios de uma só vez!</p>
+                <a href="#" class="btn-download" style="background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);">🚀 Baixar Pacote Completo (.ZIP)</a>
+            </div>
+
         </div>
     </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Universo PV / PVGAMESYT</strong> - Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>

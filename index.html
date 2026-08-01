@@ -70,3 +70,256 @@
 
 </body>
 </html>
+<!-- ============================================================
+     📚 SEÇÃO: AS 10 SAGAS · 1000 EPISÓDIOS
+     (cole logo abaixo da seção "EXPLORE O UNIVERSO")
+     ============================================================ -->
+<section id="sagas" style="padding:70px 20px;background:#000;border-top:2px solid #ff6a00;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <!-- TÍTULO DA SEÇÃO (mesmo estilo do seu site) -->
+    <div style="text-align:center;margin-bottom:50px;">
+      <h2 style="font-size:42px;font-weight:900;color:#fff;letter-spacing:3px;margin:0 0 10px 0;text-transform:uppercase;">
+        AS 10 SAGAS
+      </h2>
+      <div style="width:260px;height:3px;background:linear-gradient(90deg,transparent,#ff6a00,transparent);margin:0 auto 12px;"></div>
+      <p style="color:#c9c9c9;font-size:17px;margin:0;">
+        Do Despertar do Guerreiro à Lenda Eterna · <strong style="color:#ffb700;">10 Sagas · 1000 Episódios · 400 Horas</strong>
+      </p>
+    </div>
+
+    <!-- GRID DAS 10 SAGAS (2 colunas no PC, 1 no celular) -->
+    <div id="grid-sagas" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;"></div>
+
+    <!-- ÁREA QUE ABRE OS EPISÓDIOS (aparece só quando clica numa saga) -->
+    <div id="area-eps" style="display:none;margin-top:50px;padding:30px;border:2px solid #ff6a00;border-radius:14px;background:linear-gradient(135deg,#0a0500,#120600);box-shadow:0 0 60px rgba(255,106,0,.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+        <div>
+          <div id="saga-tag" style="color:#ff6a00;font-weight:900;letter-spacing:2px;font-size:13px;"></div>
+          <h3 id="saga-titulo" style="color:#fff;font-size:30px;font-weight:900;margin:4px 0 6px 0;"></h3>
+          <p id="saga-info" style="color:#aaa;font-size:14px;margin:0;"></p>
+        </div>
+        <button onclick="fecharEps()" style="background:#ff6a00;color:#000;border:none;padding:10px 18px;border-radius:8px;font-weight:900;cursor:pointer;font-size:13px;letter-spacing:1px;">
+          ✕ FECHAR SAGA
+        </button>
+      </div>
+      <div id="lista-eps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;"></div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .saga-card{
+    border:2px solid #333;border-radius:14px;padding:22px;cursor:pointer;transition:all .3s ease;
+    background:linear-gradient(160deg,#0c0c0c,#050505);position:relative;overflow:hidden;
+  }
+  .saga-card:hover{
+    transform:translateY(-5px);border-color:#ff6a00;box-shadow:0 15px 40px rgba(255,106,0,.2);
+  }
+  .saga-num{
+    font-family:'Courier New',monospace;font-size:14px;font-weight:900;letter-spacing:2px;
+  }
+  .saga-nome{
+    font-size:20px;font-weight:900;color:#fff;margin:6px 0 8px 0;line-height:1.2;
+  }
+  .saga-eps{
+    color:#ffb700;font-size:13px;font-weight:800;letter-spacing:1px;margin-bottom:10px;
+  }
+  .saga-villain{
+    display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.5px;
+    background:rgba(255,106,0,.12);color:#ff8a3d;border:1px solid rgba(255,106,0,.35);
+  }
+  .saga-power{
+    margin-top:8px;font-size:12px;color:#888;font-weight:700;
+  }
+  .saga-power b{color:#ffb700;}
+  .ep-item{
+    background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:12px 14px;transition:all .2s;cursor:pointer;
+  }
+  .ep-item:hover{background:#140800;border-color:#ff6a00;transform:translateX(4px);}
+  .ep-num{color:#ff6a00;font-weight:900;font-size:12px;letter-spacing:1px;}
+  .ep-nome{color:#fff;font-weight:900;font-size:14px;margin:3px 0;}
+  .ep-sinopse{color:#999;font-size:12px;line-height:1.4;}
+  @media (max-width:500px){
+    #sagas{padding:50px 14px;}
+    #sagas h2{font-size:30px;}
+  }
+</style>
+
+<script>
+/* ============================================================
+   DADOS DAS 10 SAGAS + EPISÓDIOS
+   ============================================================ */
+const SAGAS = [
+  {
+    id:1, tag:'SAGA 1', cor:'#3b82f6',
+    nome:'O Despertar do Guerreiro', eps:'Episódios 1 – 50 · 50 eps',
+    villain:'Hrolf · Rei das Sombras', poder:'Machado da Tempestade',
+    lista:[
+      [1,'A Tela Azul','Sistema aparece só para PV. Missão diária impossível.'],
+      [2,'Punição no Deserto','Ignorou a missão. 4h fugindo de insetos gigantes.'],
+      [4,'Caverna Ancestral','O Machado da Tempestade escolhe PV.'],
+      [10,'A Profecia','Vidente revela: ele é o Último Filho do Norte.'],
+      [25,'Jonas Chega','Primeiro aliado. O cérebro que equilibra a força.'],
+      [35,'Valentina Desafia','Guerreira de reino vizinho. Duelo que vira amizade.'],
+      [50,'Hrolf Derrotado','Fim da Saga 1. PV não é mais o garoto da vila.']
+    ]
+  },
+  {
+    id:2, tag:'SAGA 2', cor:'#06b6d4',
+    nome:'Os Nove Reinos', eps:'Episódios 51 – 100 · 50 eps',
+    villain:'Thorgar · Berserker Supremo', poder:'Modo Fúria 100x',
+    lista:[
+      [51,'Além das Montanhas','PV deixa a vila pela primeira vez.'],
+      [72,'Valentina Rainha','Ela assume o Reino do Gelo. Aliança oficial.'],
+      [84,'Thorgar','Berserker que ninguém consegue ferir.'],
+      [88,'Fúria 100x','PV entra no modo — quase mata aliados.'],
+      [92,'Derrota Humilhante','Aprende: força sem controle é fraqueza.'],
+      [100,'Duelo no Trono','PV vence. Nove Reinos têm um novo líder.']
+    ]
+  },
+  {
+    id:3, tag:'SAGA 3', cor:'#f97316',
+    nome:'A Guerra dos Clãs', eps:'Episódios 101 – 150 · 50 eps',
+    villain:'O Sem Rosto', poder:'Runas de Batalha',
+    lista:[
+      [101,'Paz Não Dura','Clãs antigos se recusam a obedecer PV.'],
+      [122,'Valentina Ferida','PV quase perde ela. Entra em fúria cega.'],
+      [135,'Máscara Cai','O Sem Rosto é alguém do círculo íntimo.'],
+      [142,'PV Perdoa','Decisão que divide opiniões. Mas é a certa.'],
+      [150,'Fogo Apagado','Guerra acaba. Nasce uma nova nação.']
+    ]
+  },
+  {
+    id:4, tag:'SAGA 4', cor:'#ef4444',
+    nome:'A Era dos Dragões', eps:'Episódios 151 – 200 · 50 eps',
+    villain:'Vritra · Rei das 7 Cabeças', poder:'Domínio Draconiano',
+    lista:[
+      [151,'Céu Escurece','Asas enormes tapam o sol. Eles voltaram.'],
+      [170,'Vritra','Sete cabeças, sete poderes, ódio milenar.'],
+      [180,'Primeiro Voo','Ele voa pela primeira vez. Medo + liberdade.'],
+      [200,'Não Mate — Una','PV vence sem matar Vritra. Respeito entre guerreiros.']
+    ]
+  },
+  {
+    id:5, tag:'SAGA 5', cor:'#a855f7',
+    nome:'Portal do Universo PV', eps:'Episódios 201 – 250 · 50 eps',
+    villain:'Nox · Anti-Guardião', poder:'Olho do Infinito',
+    lista:[
+      [201,'Fenda Dourada','Céu rasga. Luz que não vem do sol.'],
+      [215,'Guardiões Se Revelam','7 seres que mantêm a realidade equilibrada.'],
+      [232,'Tempo Parado','1 segundo = 1000 anos.'],
+      [242,'Recusa a Cadeira','PV vira 8º Guardião? "Não quero julgar — quero lutar com o povo."'],
+      [250,'Universo PV É Oficial','Assento no Conselho Multiversal.']
+    ]
+  },
+  {
+    id:6, tag:'SAGA 6', cor:'#eab308',
+    nome:'Guardiões Lendários', eps:'Episódios 251 – 300 · 50 eps',
+    villain:'Xyra · Conquistadora de 100 Mundos', poder:'Liderança Suprema',
+    lista:[
+      [251,'Chamado Universal','PV reúne os mais fortes de cada mundo.'],
+      [272,'Dragões se Alistam','Vritra traz todo o bando.'],
+      [279,'Fenrir Luta','Lobo divino entra oficialmente no exército.'],
+      [285,'Xyra Ataca','100 mundos conquistados. Nunca perdeu.'],
+      [300,'Trono Vazio','Vitória. Mas ninguém quer ser imperador.']
+    ]
+  },
+  {
+    id:7, tag:'SAGA 7', cor:'#0ea5e9',
+    nome:'A Guerra Universal', eps:'Episódios 301 – 400 · 100 EPS GIGANTE',
+    villain:'Império Oblívion · 10 Lordes', poder:'Exército Infinito',
+    lista:[
+      [301,'Primeira Onda','100 mundos caem em 1 dia.'],
+      [320,'Vilões de Outrora','Inimigos passados lutam AO LADO de PV.'],
+      [355,'PV Capturado','10 lordes o prendem. Querem o Sistema.'],
+      [375,'Deuses se Manifestam','Odin, Thor, Zeus — todos entram na guerra.'],
+      [400,'Vitória Custa Caro','Muitos heróis caem. O mundo nunca mais é o mesmo.']
+    ]
+  },
+  {
+    id:8, tag:'SAGA 8', cor:'#22c55e',
+    nome:'O Universo Infinito', eps:'Episódios 401 – 500 · 100 eps',
+    villain:'Primus · O Criador', poder:'Fragmento Divino',
+    lista:[
+      [440,'Primus Aparece','Criador de TUDO. Insatisfeito com sua obra.'],
+      [455,'Quer Recomeçar','Vai apagar tudo e fazer "perfeito".'],
+      [475,'Ferida Divina','PV acerta Primus. Pela primeira vez, Deus sente medo.'],
+      [500,'Deus Entende','PV luta para deixar as coisas como são.']
+    ]
+  },
+  {
+    id:9, tag:'SAGA 9', cor:'#ec4899',
+    nome:'Retorno da Escuridão', eps:'Episódios 501 – 700 · 200 EPS · ARCO MAIOR',
+    villain:'Oblivion · O Vazio Original', poder:'Tudo o que já aprendeu',
+    lista:[
+      [530,'Oblivion','Existiu ANTES da criação. É o próprio Nada.'],
+      [560,'Deuses Também Morrem','Divindades são apagadas como giz.'],
+      [620,'Coração Brilha Forte','Única coisa que resiste ao Nada.'],
+      [660,'PV Morre','Oblivion o apaga. Mas o Coração o recria.'],
+      [700,'Oblivion Compreende','Luta não é de força — é de existir.']
+    ]
+  },
+  {
+    id:10, tag:'SAGA FINAL', cor:'#fbbf24',
+    nome:'A Lenda Eterna', eps:'Episódios 701 – 1000 · 300 EPS · FINAL',
+    villain:'O Próprio Destino', poder:'Coração do Universo PV',
+    lista:[
+      [730,'PV Tem o Coração','PODE recriar tudo do jeito que quiser.'],
+      [820,'Reino Infinito','Cria um mundo onde TODOS os universos coexistem.'],
+      [900,'PV Envelhece','Ainda forte, mas passa o bastão.'],
+      [930,'Machado Entregue','Momento mais triste. Deixa a arma.'],
+      [997,'Entende o Coração','Não era para USAR — era para COMPREENDER.'],
+      [1000,'FIM.','PV olha tudo. Sorri. A lenda nunca acaba.']
+    ]
+  }
+];
+
+/* ============================================================
+   RENDERIZA OS CARDS
+   ============================================================ */
+const grid = document.getElementById('grid-sagas');
+SAGAS.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'saga-card';
+  card.style.borderTop = '4px solid ' + s.cor;
+  card.innerHTML = `
+    <div class="saga-num" style="color:${s.cor};">${s.tag}</div>
+    <div class="saga-nome">${s.nome}</div>
+    <div class="saga-eps">${s.eps}</div>
+    <div class="saga-villain">👹 ${s.villain}</div>
+    <div class="saga-power"><b>⚡ Poder:</b> ${s.poder}</div>
+  `;
+  card.onclick = () => abrirSaga(s);
+  grid.appendChild(card);
+});
+
+/* ============================================================
+   ABRE / FECHA LISTA DE EPISÓDIOS
+   ============================================================ */
+function abrirSaga(s){
+  document.getElementById('area-eps').style.display = 'block';
+  document.getElementById('saga-tag').textContent = s.tag + ' · CLIQUE NOS EPISÓDIOS';
+  document.getElementById('saga-titulo').textContent = s.nome;
+  document.getElementById('saga-info').innerHTML =
+    `<b style="color:${s.cor}">${s.eps}</b> · Vilão: ${s.villain} · Poder: ${s.poder}`;
+  const lista = document.getElementById('lista-eps');
+  lista.innerHTML = '';
+  s.lista.forEach(e => {
+    const ep = document.createElement('div');
+    ep.className = 'ep-item';
+    ep.innerHTML = `
+      <div class="ep-num">EP ${String(e[0]).padStart(3,'0')}</div>
+      <div class="ep-nome">${e[0]}. ${e[1]}</div>
+      <div class="ep-sinopse">${e[2]}</div>
+    `;
+    lista.appendChild(ep);
+  });
+  document.getElementById('area-eps').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function fecharEps(){
+  document.getElementById('area-eps').style.display = 'none';
+}
+</script>
+<!-- ============== FIM DA SEÇÃO 10 SAGAS ============== -->

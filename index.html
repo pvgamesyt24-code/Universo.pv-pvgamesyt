@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIKINGS: Universo dos Guerreiros</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0b0c10; color: #c5a880; }
+        header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://unsplash.com') center/cover; height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-bottom: 3px solid #ff4500; }
+        h1 { font-size: 3rem; color: #fff; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 10px #ff4500; }
+        .subtitle { font-size: 1.1rem; color: #8f9499; margin-top: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 30px; text-transform: uppercase; color: #fff; border-bottom: 2px solid #c5a880; display: inline-block; padding-bottom: 5px; }
+        .pv-container { text-align: center; margin-bottom: 60px; }
+        .video-wrapper { max-width: 800px; margin: 0 auto; background: #000; border: 3px solid #ff4500; border-radius: 8px; box-shadow: 0 0 20px rgba(255, 69, 0, 0.4); overflow: hidden; }
+        video { width: 100%; display: block; }
+        .grid-universe { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: #1f2833; padding: 20px; border-radius: 5px; border-left: 5px solid #ff4500; }
+        .card h3 { color: #fff; margin-bottom: 10px; text-transform: uppercase; font-size: 1.1rem; }
+        .card p { color: #c5a880; font-size: 0.95rem; line-height: 1.5; }
+        footer { text-align: center; padding: 20px; background: #050508; font-size: 0.8rem; color: #666; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>VIKINGS</h1>
+        <p class="subtitle">O Universo PV dos Guerreiros Supremos</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- SEÇÃO DO TRAILER / PV LOCAL -->
+        <section class="pv-container">
+            <h2 class="section-title">Vídeo Promocional (PV)</h2>
+            <div class="video-wrapper">
+                <!-- Certifique-se de enviar o arquivo "video.mp4" para o seu GitHub -->
+                <video controls poster="https://unsplash.com">
+                    <source src="video.mp4" type="video/mp4">
+                    Seu navegador não suporta a reprodução de vídeos nativos.
+                </video>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO UNIVERSO -->
+        <section>
+            <div style="text-align: center;"><h2 class="section-title">Explore o Universo</h2></div>
+            <div class="grid-universe">
+                <div class="card">
+                    <h3>Os Guerreiros</h3>
+                    <p>Clãs implacáveis guiados pela honra, fúria e o desejo inabalável de alcançar os salões sagrados de Valhalla.</p>
+                </div>
+                <div class="card">
+                    <h3>Mitologia Ativa</h3>
+                    <p>Um mundo onde deuses nórdicos observam as batalhas e monstros mitológicos testam a força dos mortais.</p>
+                </div>
+                <div class="card">
+                    <h3>Combate Sangrento</h3>
+                    <p>Animação de alta fidelidade com batalhas táticas de machado, espada, estratégias navais e invasões épicas.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Universo PV - Vikings Project. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
